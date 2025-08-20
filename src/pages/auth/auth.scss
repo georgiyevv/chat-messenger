@@ -1,0 +1,90 @@
+@use '../../styles/global.scss' as *;
+
+.auth-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	border-radius: 12px;
+	padding: 50px 30px 30px;
+	box-shadow: 0 0 10px 0 $color-text-secondary;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	&__inputs {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__form {
+		margin-top: 40px;
+	}
+
+	&__title {
+		text-align: center;
+		font-size: 20px;
+		font-weight: 500;
+		margin: 0;
+	}
+
+	&__label {
+		display: flex;
+		flex-direction: column;
+		gap: 7px;
+		font-size: 9px;
+		border-bottom: 1px solid $color-primary;
+		color: $color-light-gray;
+		margin-top: 16px;
+		padding-bottom: 7px;
+
+		&:first-child {
+			margin-top: 0;
+		}
+
+		&:has(.auth-form__input--error) {
+			border-bottom: 1px solid $color-red;
+		}
+
+		input {
+			width: 340px;
+			border: none;
+			outline: none;
+			font-size: 13px;
+		}
+	}
+
+	&__input--error {
+		border-bottom: 1px solid $color-red;
+		color: $color-red;
+	}
+
+	&__button {
+		width: 100%;
+		padding: 12px;
+		border-radius: 8px;
+		margin-top: 159px;
+		background-color: $color-primary;
+		color: $color-white;
+		border: none;
+		font-size: 13px;
+
+		&--sign-in {
+			margin-top: 47px;
+		}
+	}
+
+	&__link {
+		text-align: center;
+		text-decoration: none;
+		color: $color-primary;
+		margin-top: 14px;
+		font-size: 11px;
+	}
+
+	&__error {
+		color: $color-red;
+		font-size: 8px;
+		margin-top: 7px;
+	}
+}

@@ -1,0 +1,28 @@
+<main class='auth-form'>
+	<h1 class='auth-form__title'>{{title}}</h1>
+	<form class='auth-form__form'>
+		<div class='auth-form__inputs'>
+			{{#each form.inputs}}
+				<label class='auth-form__label'>
+					{{label}}
+					<div class='auth-form__input-wrapper'>
+						{{#if icon}}
+							<span class='auth-form__icon'>{{icon}}</span>
+						{{/if}}
+						<input name='{{name}}' type='{{type}}' class='auth-form__input{{#if error}} auth-form__input--error{{/if}}' />
+					</div>
+				</label>
+
+				{{#if error}}
+					<p class='auth-form__error'>{{error}}</p>
+				{{/if}}
+			{{/each}}
+		</div>
+		<button class='auth-form__button auth-form__button--sign-in' type='submit'>
+			{{form.button}}
+		</button>
+	</form>
+	<a class='auth-form__link' href='{{link.href}}'>
+		{{link.text}}
+	</a>
+</main>
