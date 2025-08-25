@@ -1,7 +1,4 @@
-import { templateRender } from '@utils/template-render'
-import './chats.scss'
-
-const template = {
+export default {
 	chats: [
 		{
 			id: 1,
@@ -26,4 +23,3 @@ const template = {
 		},
 	],
 }
-templateRender('/src/pages/chats/chats.hbs', template)

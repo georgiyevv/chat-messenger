@@ -5,9 +5,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>404</title>
 		<link rel="stylesheet" href="../error.scss" />
-		<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 	</head>
 	<body>
-		<script type="module" src="./template.js"></script>
+		<main class="error">
+			<h1 class="error__title">{{title}}</h1>
+			<p class="error__description">{{description}}</p>
+			<a class="error__link" href="{{link.href}}"> {{link.text}} </a>
+		</main>
 	</body>
 </html>

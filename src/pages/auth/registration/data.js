@@ -1,45 +1,41 @@
-import { INPUT_TYPES } from '@shared/consts'
-import { templateRender } from '@utils/template-render'
-import '../auth.scss'
-
-const template = {
+export default {
 	title: 'Регистрация',
 	form: {
 		inputs: [
 			{
 				label: 'Почта',
 				name: 'email',
-				type: INPUT_TYPES.EMAIL,
+				type: 'email',
 			},
 			{
 				label: 'Логин',
 				name: 'login',
-				type: INPUT_TYPES.TEXT,
+				type: 'text',
 			},
 			{
 				label: 'Имя',
 				name: 'first_name',
-				type: INPUT_TYPES.TEXT,
+				type: 'text',
 			},
 			{
 				label: 'Фамилия',
 				name: 'second_name',
-				type: INPUT_TYPES.TEXT,
+				type: 'text',
 			},
 			{
 				label: 'Телефон',
 				name: 'phone',
-				type: INPUT_TYPES.TEL,
+				type: 'tel',
 			},
 			{
 				label: 'Пароль',
 				name: 'password',
-				type: INPUT_TYPES.PASSWORD,
+				type: 'password',
 			},
 			{
 				label: 'Пароль (еще раз)',
 				name: 'password_confirm',
-				type: INPUT_TYPES.PASSWORD,
+				type: 'password',
 			},
 		],
 		button: 'Зарегистрироваться',
@@ -49,5 +45,3 @@ const template = {
 		href: '/src/pages/auth/login/login.html',
 	},
 }
-
-templateRender('/src/pages/auth/registration/registration.hbs', template)

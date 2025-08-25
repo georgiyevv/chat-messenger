@@ -1,7 +1,4 @@
-import { templateRender } from '@utils/template-render'
-import './profile.scss'
-
-const template = {
+export default {
 	avatar: '',
 	name: 'Пользователь',
 	profileInfo: [
@@ -31,5 +28,3 @@ const template = {
 		},
 	],
 }
-
-templateRender('/src/pages/profile/profile.hbs', template)

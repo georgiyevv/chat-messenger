@@ -1,9 +1,25 @@
-import { copyFileSync, mkdirSync, readdirSync } from 'fs'
-import { join, resolve } from 'path'
+import { resolve } from 'path'
 import { fileURLToPath, URL } from 'url'
 import { defineConfig } from 'vite'
+import handlebars from 'vite-plugin-handlebars'
+
+import loginData from './src/pages/auth/login/data.js'
+import registrationData from './src/pages/auth/registration/data.js'
+import chatsData from './src/pages/chats/data.js'
+import error404Data from './src/pages/error/404/data.js'
+import error500Data from './src/pages/error/500/data.js'
+import profileData from './src/pages/profile/data.js'
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
+
+const pageData = {
+	'/src/pages/auth/login/login.html': loginData,
+	'/src/pages/auth/registration/registration.html': registrationData,
+	'/src/pages/chats/chats.html': chatsData,
+	'/src/pages/profile/profile.html': profileData,
+	'/src/pages/error/404/404.html': error404Data,
+	'/src/pages/error/500/500.html': error500Data,
+}
 
 export default defineConfig({
 	root: './',
@@ -21,8 +37,7 @@ export default defineConfig({
 		open: true,
 	},
 	build: {
-		outDir: 'dist',
-		assetsDir: 'assets',
+		outDir: resolve(__dirname, './dist'),
 		rollupOptions: {
 			input: {
 				main: './index.html',
@@ -32,6 +47,17 @@ export default defineConfig({
 				profile: './src/pages/profile/profile.html',
 				error404: './src/pages/error/404/404.html',
 				error500: './src/pages/error/500/500.html',
+			},
+			output: {
+				chunkFileNames: 'assets/[name]-[hash].js',
+				entryFileNames: 'assets/[name]-[hash].js',
+				assetFileNames: 'assets/[name]-[hash].[ext]',
+				manualChunks: {
+					vendor: ['handlebars'],
+					auth: ['./src/pages/auth/login/data.js', './src/pages/auth/registration/data.js'],
+					main: ['./src/pages/chats/data.js', './src/pages/profile/data.js'],
+					errors: ['./src/pages/error/404/data.js', './src/pages/error/500/data.js'],
+				},
 			},
 		},
 	},
@@ -43,21 +69,11 @@ export default defineConfig({
 		},
 	},
 	plugins: [
-		{
-			name: 'copy-hbs-files',
-			writeBundle() {
-				const copyDir = (src, dest) => {
-					mkdirSync(dest, { recursive: true })
-					readdirSync(src, { withFileTypes: true }).forEach(entry => {
-						const srcPath = join(src, entry.name)
-						const destPath = join(dest, entry.name)
-						entry.isDirectory()
-							? copyDir(srcPath, destPath)
-							: entry.name.endsWith('.hbs') && copyFileSync(srcPath, destPath)
-					})
-				}
-				copyDir('src', 'dist/src')
+		handlebars({
+			partialDirectory: resolve(__dirname, 'src/pages'),
+			context(pagePath) {
+				return pageData[pagePath] || {}
 			},
-		},
+		}),
 	],
 })
