@@ -9,6 +9,8 @@ import chatsData from './src/pages/chats/data.js'
 import error404Data from './src/pages/error/404/data.js'
 import error500Data from './src/pages/error/500/data.js'
 import profileData from './src/pages/profile/data.js'
+import passwordChangeData from './src/pages/profile/password-change/data.js'
+import profileEditData from './src/pages/profile/profile-edit/data.js'
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
@@ -19,6 +21,8 @@ const pageData = {
 	'/src/pages/profile/profile.html': profileData,
 	'/src/pages/error/404/404.html': error404Data,
 	'/src/pages/error/500/500.html': error500Data,
+	'/src/pages/profile/profile-edit/profile-edit.html': profileEditData,
+	'/src/pages/profile/password-change/password-change.html': passwordChangeData,
 }
 
 export default defineConfig({
@@ -47,6 +51,8 @@ export default defineConfig({
 				profile: './src/pages/profile/profile.html',
 				error404: './src/pages/error/404/404.html',
 				error500: './src/pages/error/500/500.html',
+				profileEdit: './src/pages/profile/profile-edit/profile-edit.html',
+				passwordChange: './src/pages/profile/password-change/password-change.html',
 			},
 			output: {
 				chunkFileNames: 'assets/[name]-[hash].js',
@@ -70,7 +76,7 @@ export default defineConfig({
 	},
 	plugins: [
 		handlebars({
-			partialDirectory: resolve(__dirname, 'src/pages'),
+			partialDirectory: [resolve(__dirname, 'src/pages'), resolve(__dirname, 'src/shared/ui')],
 			context(pagePath) {
 				return pageData[pagePath] || {}
 			},

@@ -14,22 +14,13 @@
 					{{#each form.inputs}}
 					<label class="auth-form__label">
 						{{label}}
-						<div class="auth-form__input-wrapper">
-							{{#if icon}}
-							<span class="auth-form__icon">{{icon}}</span>
-							{{/if}}
-							<input
-								name="{{name}}"
-								type="{{type}}"
-								class="auth-form__input{{#if error}} auth-form__input--error{{/if}}"
-							/>
-						</div>
+						<div class="auth-form__input-wrapper">{{> Input class="auth-form__input"}}</div>
 					</label>
 					{{/each}}
 				</div>
-				<button class="auth-form__button" type="submit">{{form.button}}</button>
+				{{> Button text=form.button class="auth-form__button" type="submit"}}
 			</form>
-			<a class="auth-form__link" href="{{link.href}}"> {{link.text}} </a>
+			{{> Link class="auth-form__link" href=link.href text=link.text}}
 		</main>
 	</body>
 </html>

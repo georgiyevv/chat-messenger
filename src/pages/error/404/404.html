@@ -10,7 +10,7 @@
 		<main class="error">
 			<h1 class="error__title">{{title}}</h1>
 			<p class="error__description">{{description}}</p>
-			<a class="error__link" href="{{link.href}}"> {{link.text}} </a>
+			{{> Link class="error__link" href=link.href text=link.text}}
 		</main>
 	</body>
 </html>

@@ -44,11 +44,7 @@
 				{{#each chats}}
 				<div class="chat-message-wrapper">
 					<div class="chat-message">
-						<div class="chat-message__avatar">
-							{{#if avatar}}
-							<img src="{{avatar}}" alt="" />
-							{{/if}}
-						</div>
+						{{> Avatar class="chat-message__avatar" src=avatar alt=""}}
 						<div class="chat-message__info">
 							<p class="chat-message__name">{{name}}</p>
 							<p class="chat-message__description">{{lastMessage}}</p>
