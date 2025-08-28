@@ -1,0 +1,141 @@
+@use '../../styles/global.scss' as *;
+
+$profile-aside-width: 64px;
+
+.profile-aside {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: $profile-aside-width;
+	height: 100vh;
+	background-color: $color-background-surface;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	border-right: 1px solid $color-light-gray;
+
+	&__link {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 28px;
+		height: 28px;
+		background-color: $color-primary;
+		color: $color-white;
+		border: none;
+		border-radius: 50%;
+	}
+}
+
+.profile {
+	display: flex;
+	justify-content: center;
+	margin-top: 60px;
+
+	&__header {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__avatar {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 130px;
+		height: 130px;
+		border-radius: 50%;
+		background-color: $color-lightest-gray;
+
+		&-img {
+			width: 40px;
+			height: 40px;
+		}
+	}
+
+	&__name {
+		margin-top: 21px;
+	}
+
+	&-info {
+		display: flex;
+		flex-direction: column;
+		width: 510px;
+		margin-top: 60px;
+		gap: 10px;
+
+		&__button-wrapper {
+			display: flex;
+			justify-content: center;
+		}
+
+		&__button {
+			align-self: center;
+			width: 280px;
+			height: 37px;
+			background-color: $color-primary;
+			color: $color-white;
+			border: none;
+			border-radius: 8px;
+			margin-top: 60px;
+			cursor: pointer;
+
+			&--change-password {
+				margin-top: 162px;
+			}
+		}
+
+		&__form-wrapper {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		&__input {
+			text-align: right;
+			border: none;
+			outline: none;
+		}
+
+		&__item {
+			display: flex;
+			list-style: none;
+			justify-content: space-between;
+			font-size: 13px;
+			border-bottom: 1px solid $color-lightest-gray;
+			padding-bottom: 10px;
+		}
+
+		&__label {
+			color: $color-text-primary;
+		}
+
+		&__value {
+			color: $color-text-secondary;
+		}
+	}
+
+	&__footer {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		margin-top: 60px;
+
+		&-link {
+			text-decoration: none;
+			color: $color-primary;
+			border-bottom: 1px solid $color-lightest-gray;
+			padding-bottom: 10px;
+			font-size: 13px;
+
+			&--sign-out {
+				color: $color-red;
+			}
+		}
+	}
+}

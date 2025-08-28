@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Профиль</title>
+		<link rel="stylesheet" href="./profile.scss" />
+	</head>
+	<body>
+		<aside class="profile-aside">
+			<a href="/src/pages/chats/chats.html" class="profile-aside__link">
+				<svg
+					width="7"
+					height="12"
+					viewBox="0 0 7 12"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<path d="M6 11L2 6L6 1" stroke="white" stroke-width="1.6" />
+				</svg>
+			</a>
+		</aside>
+		<main class="profile">
+			<div class="profile__wrapper">
+				<div class="profile__header">
+					{{> Avatar class="profile__avatar" imgClass="profile__avatar-img" src=avatar
+					alt="avatar"}}
+					<h2 class="profile__name">{{name}}</h2>
+				</div>
+
+				<div class="profile-info">
+					{{#each profileInfo}}
+					<ul class="profile-info__item">
+						<li class="profile-info__label">{{label}}</li>
+						<li class="profile-info__value">{{value}}</li>
+					</ul>
+					{{/each}}
+				</div>
+
+				<div class="profile__footer">
+					{{> Link href="./profile-edit/profile-edit.html" class="profile__footer-link"
+					text="Изменить данные"}} {{> Link href="./password-change/password-change.html"
+					class="profile__footer-link" text="Изменить пароль"}} {{> Link href="/index.html"
+					class="profile__footer-link profile__footer-link--sign-out" text="Выйти"}}
+				</div>
+			</div>
+		</main>
+	</body>
+</html>
